@@ -45,15 +45,15 @@ public class FormatHelperTest extends TestCase {
 		assertEquals(
 				"TIMESTAMP '2011-07-24 00:00:00'",
 				FormatHelper.formatSqlValue(ColumnType.TIMESTAMP,
-						DateUtils.get(2011, Month.JULY, 24)));
+						TimeTestHelper.date(2011, java.time.Month.JULY, 24)));
 		assertEquals(
 				"DATE '2011-07-24'",
 				FormatHelper.formatSqlValue(ColumnType.DATE,
-						DateUtils.get(2011, Month.JULY, 24)));
+				        TimeTestHelper.date(2011, java.time.Month.JULY, 24)));
 		assertEquals(
 				"TIME '00:00:00'",
 				FormatHelper.formatSqlValue(ColumnType.TIME,
-						DateUtils.get(2011, Month.JULY, 24)));
+				        TimeTestHelper.date(2011, java.time.Month.JULY, 24)));
 		assertEquals(
 				"('foo' , 1 , 'bar' , 0.1234)",
 				FormatHelper.formatSqlValue(null,
@@ -69,7 +69,7 @@ public class FormatHelperTest extends TestCase {
 
         c.setTimeInMillis(0);
         c.set(Calendar.YEAR, 2011);
-        c.set(Calendar.MONTH, Month.JULY.getCalendarConstant());
+        c.set(Calendar.MONTH, java.time.Month.JULY.ordinal());
         c.set(Calendar.DAY_OF_MONTH, 24);
         c.set(Calendar.HOUR_OF_DAY, 17);
         c.set(Calendar.MINUTE, 34);
@@ -80,7 +80,7 @@ public class FormatHelperTest extends TestCase {
 
         c.setTimeInMillis(0);
         c.set(Calendar.YEAR, 2011);
-        c.set(Calendar.MONTH, Month.JULY.getCalendarConstant());
+        c.set(Calendar.MONTH, java.time.Month.JULY.ordinal());
         c.set(Calendar.DAY_OF_MONTH, 24);
         c.set(Calendar.HOUR_OF_DAY, 0);
         c.set(Calendar.MINUTE, 0);

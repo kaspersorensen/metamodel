@@ -23,6 +23,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -118,13 +119,13 @@ public final class FormatHelper {
         final String typePrefix;
         if (columnType.isTimeBased()) {
             if (columnType == ColumnType.DATE) {
-                format = DateUtils.createDateFormat("yyyy-MM-dd");
+                format = new SimpleDateFormat("yyyy-MM-dd");
                 typePrefix = "DATE";
             } else if (columnType == ColumnType.TIME) {
-                format = DateUtils.createDateFormat("HH:mm:ss");
+                format = new SimpleDateFormat("HH:mm:ss");
                 typePrefix = "TIME";
             } else {
-                format = DateUtils.createDateFormat("yyyy-MM-dd HH:mm:ss");
+                format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 typePrefix = "TIMESTAMP";
             }
 
@@ -178,7 +179,7 @@ public final class FormatHelper {
 
         for (String format : formats) {
             try {
-                DateFormat dateFormat = DateUtils.createDateFormat(format);
+                final DateFormat dateFormat = new SimpleDateFormat(format);
                 return dateFormat.parse(value);
             } catch (ParseException e) {
                 // proceed to next format

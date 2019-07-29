@@ -23,6 +23,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
+@SuppressWarnings("deprecation")
 public class DateUtilsTest extends TestCase {
 
 	public void testGet() throws Exception {

@@ -28,6 +28,7 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
+@SuppressWarnings("rawtypes")
 public class CollectionUtilsTest extends TestCase {
 
     public void testArray1() throws Exception {

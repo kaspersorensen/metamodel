@@ -18,12 +18,16 @@
  */
 package org.apache.metamodel.util;
 
+import java.time.DayOfWeek;
 import java.util.Calendar;
 
 /**
  * Provides a handy and type-safe enum around the weekdays otherwise defined as
  * int constants in java.util.Calendar.
+ * 
+ * @deprecated use {@link DayOfWeek} instead.
  */
+@Deprecated
 public enum Weekday implements HasName {
 
     MONDAY(Calendar.MONDAY),

@@ -18,22 +18,21 @@
  */
 package org.apache.metamodel.util;
 
-import junit.framework.TestCase;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.Date;
 
-@SuppressWarnings("deprecation")
-public class WeekdayTest extends TestCase {
+/**
+ * Internal helper class for working with time in unit tests.
+ */
+public class TimeTestHelper {
 
-    public void testGetName() throws Exception {
-        assertEquals("Monday", Weekday.MONDAY.getName());
-    }
-    
-    public void testNext() throws Exception {
-        assertEquals(Weekday.TUESDAY, Weekday.MONDAY.next());
-        assertEquals(Weekday.MONDAY, Weekday.SUNDAY.next());
-    }
-    
-    public void testPrevious() throws Exception {
-        assertEquals(Weekday.SUNDAY, Weekday.MONDAY.previous());
-        assertEquals(Weekday.SATURDAY, Weekday.SUNDAY.previous());
+    public static Date date(int year, Month m, int d) {
+        final LocalDate localDate = LocalDate.of(year, m, d);
+        final ZoneId zoneId = ZoneId.systemDefault();
+        final Instant instant = localDate.atStartOfDay(zoneId).toInstant();
+        return Date.from(instant);
     }
 }

@@ -141,7 +141,7 @@ public final class TimeComparator implements Comparator<Object> {
             if (prototypePattern.length() == value.length()) {
                 DateFormat dateFormat;
                 try {
-                    dateFormat = DateUtils.createDateFormat(prototypePattern);
+                    dateFormat = new SimpleDateFormat(prototypePattern);
                     return dateFormat.parse(value);
                 } catch (Exception e) {
                     // proceed to next formatter
@@ -150,7 +150,7 @@ public final class TimeComparator implements Comparator<Object> {
                 if (prototypePattern.indexOf('-') != -1) {
                     // try with '.' in stead of '-'
                     try {
-                        dateFormat = DateUtils.createDateFormat(prototypePattern.replaceAll("\\-", "\\."));
+                        dateFormat = new SimpleDateFormat(prototypePattern.replaceAll("\\-", "\\."));
                         return dateFormat.parse(value);
                     } catch (Exception e) {
                         // proceed to next formatter
@@ -158,7 +158,7 @@ public final class TimeComparator implements Comparator<Object> {
 
                     // try with '/' in stead of '-'
                     try {
-                        dateFormat = DateUtils.createDateFormat(prototypePattern.replaceAll("\\-", "\\/"));
+                        dateFormat = new SimpleDateFormat(prototypePattern.replaceAll("\\-", "\\/"));
                         return dateFormat.parse(value);
                     } catch (Exception e) {
                         // proceed to next formatter
@@ -179,7 +179,7 @@ public final class TimeComparator implements Comparator<Object> {
         // test if the number is actually a format of the type yyyyMMdd
         if (stringValue.length() == 8 && (stringValue.startsWith("1") || stringValue.startsWith("2"))) {
             try {
-                return DateUtils.createDateFormat("yyyyMMdd").parse(stringValue);
+                return new SimpleDateFormat("yyyyMMdd").parse(stringValue);
             } catch (Exception e) {
                 // do nothing, proceed to next method of conversion
             }
@@ -188,7 +188,7 @@ public final class TimeComparator implements Comparator<Object> {
         // test if the number is actually a format of the type yyMMdd
         if (stringValue.length() == 6) {
             try {
-                return DateUtils.createDateFormat("yyMMdd").parse(stringValue);
+                return new SimpleDateFormat("yyMMdd").parse(stringValue);
             } catch (Exception e) {
                 // do nothing, proceed to next method of conversion
             }

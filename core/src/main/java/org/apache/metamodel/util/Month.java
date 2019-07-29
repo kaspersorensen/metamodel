@@ -23,7 +23,10 @@ import java.util.Calendar;
 /**
  * Provides a handy and type-safe enum around the months otherwise defined as
  * int constants in java.util.Calendar.
+ * 
+ * @deprecated use {@link java.time.Month} instead.
  */
+@Deprecated
 public enum Month implements HasName {
 
     JANUARY(Calendar.JANUARY),

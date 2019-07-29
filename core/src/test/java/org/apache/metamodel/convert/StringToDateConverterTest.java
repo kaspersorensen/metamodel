@@ -19,48 +19,45 @@
 package org.apache.metamodel.convert;
 
 import java.text.DateFormat;
+import java.time.Month;
 import java.util.Date;
+
+import org.apache.metamodel.util.TimeTestHelper;
 
 import junit.framework.TestCase;
 
-import org.apache.metamodel.util.DateUtils;
-import org.apache.metamodel.util.Month;
-
 public class StringToDateConverterTest extends TestCase {
 
-	public void testToVirtualSimpleDateFormat() throws Exception {
-		StringToDateConverter conv = new StringToDateConverter("yyyy-MM-dd");
-		assertNull(conv.toVirtualValue(null));
-		assertNull(conv.toVirtualValue(""));
+    public void testToVirtualSimpleDateFormat() throws Exception {
+        StringToDateConverter conv = new StringToDateConverter("yyyy-MM-dd");
+        assertNull(conv.toVirtualValue(null));
+        assertNull(conv.toVirtualValue(""));
 
-		assertEquals(DateUtils.get(2010, Month.DECEMBER, 31),
-				conv.toVirtualValue("2010-12-31"));
-	}
+        assertEquals(TimeTestHelper.date(2010, Month.DECEMBER, 31), conv.toVirtualValue("2010-12-31"));
+    }
 
-	public void testToVirtualNoArgs() throws Exception {
-		StringToDateConverter conv = new StringToDateConverter();
-		assertNull(conv.toVirtualValue(null));
-		assertNull(conv.toVirtualValue(""));
+    public void testToVirtualNoArgs() throws Exception {
+        StringToDateConverter conv = new StringToDateConverter();
+        assertNull(conv.toVirtualValue(null));
+        assertNull(conv.toVirtualValue(""));
 
-		assertEquals(DateUtils.get(2010, Month.DECEMBER, 31),
-				conv.toVirtualValue("2010-12-31"));
-	}
+        assertEquals(TimeTestHelper.date(2010, Month.DECEMBER, 31), conv.toVirtualValue("2010-12-31"));
+    }
 
-	public void testToPhysicalSimpleDateFormat() throws Exception {
-		StringToDateConverter conv = new StringToDateConverter("yyyy-MM-dd");
-		assertNull(conv.toPhysicalValue(null));
-		Date input = DateUtils.get(2010, Month.DECEMBER, 31);
-		String physicalValue = conv.toPhysicalValue(input);
-		assertEquals("2010-12-31", physicalValue);
-	}
+    public void testToPhysicalSimpleDateFormat() throws Exception {
+        StringToDateConverter conv = new StringToDateConverter("yyyy-MM-dd");
+        assertNull(conv.toPhysicalValue(null));
+        Date input = TimeTestHelper.date(2010, Month.DECEMBER, 31);
+        String physicalValue = conv.toPhysicalValue(input);
+        assertEquals("2010-12-31", physicalValue);
+    }
 
-	public void testToPhysicalNoArgs() throws Exception {
-		StringToDateConverter conv = new StringToDateConverter();
-		assertNull(conv.toPhysicalValue(null));
-		Date input = DateUtils.get(2010, Month.DECEMBER, 31);
-		String physicalValue = conv.toPhysicalValue(input);
-		Date virtualValue = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,
-				DateFormat.MEDIUM).parse(physicalValue);
-		assertEquals(virtualValue, input);
-	}
+    public void testToPhysicalNoArgs() throws Exception {
+        StringToDateConverter conv = new StringToDateConverter();
+        assertNull(conv.toPhysicalValue(null));
+        Date input = TimeTestHelper.date(2010, Month.DECEMBER, 31);
+        String physicalValue = conv.toPhysicalValue(input);
+        Date virtualValue = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).parse(physicalValue);
+        assertEquals(virtualValue, input);
+    }
 }

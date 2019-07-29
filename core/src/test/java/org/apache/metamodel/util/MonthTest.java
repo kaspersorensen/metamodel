@@ -20,6 +20,7 @@ package org.apache.metamodel.util;
 
 import junit.framework.TestCase;
 
+@SuppressWarnings("deprecation")
 public class MonthTest extends TestCase {
 
     public void testGetName() throws Exception {

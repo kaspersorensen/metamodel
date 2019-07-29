@@ -19,6 +19,7 @@
 package org.apache.metamodel.util;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -47,8 +48,7 @@ public class TimeComparatorTest extends TestCase {
 	}
 
 	public void testToDate() throws Exception {
-		DateFormat dateFormat = DateUtils
-				.createDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
 		assertEquals("2008-11-04 00:00:00.000",
 				dateFormat.format(TimeComparator.toDate("08-11-04")));

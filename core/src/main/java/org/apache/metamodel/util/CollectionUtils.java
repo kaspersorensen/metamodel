@@ -101,7 +101,7 @@ public final class CollectionUtils {
                     if(collection instanceof List || collection.getClass().isArray()){
                         Object obj = null;
                         if(collection instanceof List){
-                            obj = ((List) collection).get(arrayIndex);
+                            obj = ((List<?>) collection).get(arrayIndex);
                         } else if (collection.getClass().isArray()) {
                             obj = Array.get(collection, arrayIndex);
                         }

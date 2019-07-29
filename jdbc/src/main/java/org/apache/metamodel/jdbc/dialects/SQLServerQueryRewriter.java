@@ -19,6 +19,7 @@
 package org.apache.metamodel.jdbc.dialects;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.metamodel.jdbc.JdbcDataContext;
@@ -29,7 +30,6 @@ import org.apache.metamodel.query.SelectClause;
 import org.apache.metamodel.query.SelectItem;
 import org.apache.metamodel.schema.Column;
 import org.apache.metamodel.schema.ColumnType;
-import org.apache.metamodel.util.DateUtils;
 
 public class SQLServerQueryRewriter extends OffsetFetchQueryRewriter {
 
@@ -114,7 +114,7 @@ public class SQLServerQueryRewriter extends OffsetFetchQueryRewriter {
 
                 final Date date = (Date) operand;
 
-                final DateFormat format = DateUtils.createDateFormat("yyyyMMdd HH:mm:ss.SSS");
+                final DateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss.SSS");
                 final String dateTimeValue = "CAST('" + format.format(date) + "' AS DATETIME)";
 
                 sb.append(dateTimeValue);

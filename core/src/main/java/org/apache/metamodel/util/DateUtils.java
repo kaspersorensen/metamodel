@@ -25,7 +25,10 @@ import java.util.Date;
 
 /**
  * Various utility methods pertaining to date handling
+ * 
+ * @deprecated use the java.time API instead.
  */
+@Deprecated
 public final class DateUtils {
 
 	public static final long MILLISECONDS_PER_SECOND = 1000;
